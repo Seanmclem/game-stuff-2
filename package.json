@@ -10,8 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.15.11",
+    "ecctrl": "^1.0.45",
+    "leva": "^0.9.35",
+    "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "three": "^0.158.0",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
