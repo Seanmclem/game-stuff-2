@@ -1,6 +1,3 @@
-import { Grid } from "@react-three/drei";
-import { Perf } from "r3f-perf";
-
 import { LevelOne } from "./scenes/levels/LevelOne";
 import { useLevelStore } from "./stores/useLevelStore";
 import { LevelTwo } from "./scenes/levels/LevelTwo";
@@ -14,15 +11,6 @@ export default function Experience() {
 
   return (
     <>
-      <Perf position="top-left" />
-
-      <Grid
-        args={[300, 300]}
-        sectionColor={"lightgray"}
-        cellColor={"gray"}
-        position={[0, -0.99, 0]}
-      />
-
       {currnent_level === 1 ? (
         <LevelOne />
       ) : currnent_level === 2 ? (

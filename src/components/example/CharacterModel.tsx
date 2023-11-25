@@ -10,14 +10,13 @@ import { Suspense, useEffect, useRef, useMemo, useState } from "react";
 import * as THREE from "three";
 import { BallCollider, RapierCollider } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
-import type { GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
+import type { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import { useGame } from "ecctrl";
 
 export default function CharacterModel(props: CharacterModelProps) {
   // Change the character src to yours
   const group = useRef<THREE.Group>();
   const { nodes, animations } = useGLTF("/Floating Character.glb") as GLTF & {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     nodes: any;
   };
   const { actions } = useAnimations(animations, group);
@@ -133,22 +132,20 @@ export default function CharacterModel(props: CharacterModelProps) {
     if (rightHand && leftHand) {
       rightHand.getWorldPosition(rightHandPos);
       leftHand.getWorldPosition(leftHandPos);
-      rightHandRef?.current?.parent?.getWorldPosition(bodyPos);
+      rightHandRef.current.parent.getWorldPosition(bodyPos);
     }
 
     // Apply both hands position to hand colliders
     if (rightHandColliderRef.current && leftHandColliderRef.current) {
-      rightHandRef?.current?.position.copy(rightHandPos).sub(bodyPos);
-      rightHandRef?.current?.position &&
-        rightHandColliderRef.current.setTranslationWrtParent(
-          rightHandRef.current.position
-        );
+      rightHandRef.current.position.copy(rightHandPos).sub(bodyPos);
+      rightHandColliderRef.current.setTranslationWrtParent(
+        rightHandRef.current.position
+      );
 
-      leftHandRef?.current?.position.copy(leftHandPos).sub(bodyPos);
-      leftHandRef?.current &&
-        leftHandColliderRef.current.setTranslationWrtParent(
-          leftHandRef.current.position
-        );
+      leftHandRef.current.position.copy(leftHandPos).sub(bodyPos);
+      leftHandColliderRef.current.setTranslationWrtParent(
+        leftHandRef.current.position
+      );
     }
   });
 
@@ -158,18 +155,17 @@ export default function CharacterModel(props: CharacterModelProps) {
 
     // For jump and jump land animation, only play once and clamp when finish
     if (
-      action &&
-      (curAnimation === animationSet.jump ||
-        curAnimation === animationSet.jumpLand ||
-        curAnimation === animationSet.action1 ||
-        curAnimation === animationSet.action2 ||
-        curAnimation === animationSet.action3 ||
-        curAnimation === animationSet.action4)
+      curAnimation === animationSet.jump ||
+      curAnimation === animationSet.jumpLand ||
+      curAnimation === animationSet.action1 ||
+      curAnimation === animationSet.action2 ||
+      curAnimation === animationSet.action3 ||
+      curAnimation === animationSet.action4
     ) {
       action
         .reset()
         .fadeIn(0.2)
-        .setLoop(THREE.LoopOnce, undefined as unknown as number)
+        .setLoop(THREE.LoopOnce, undefined as number)
         .play();
       action.clampWhenFinished = true;
       // Only show mug during cheer action
@@ -179,7 +175,7 @@ export default function CharacterModel(props: CharacterModelProps) {
         mugModel.visible = false;
       }
     } else {
-      action?.reset().fadeIn(0.2).play();
+      action.reset().fadeIn(0.2).play();
       mugModel.visible = false;
     }
 
@@ -188,7 +184,7 @@ export default function CharacterModel(props: CharacterModelProps) {
 
     return () => {
       // Fade out previous action
-      action?.fadeOut(0.2);
+      action.fadeOut(0.2);
 
       // Clean up mixer listener, and empty the _listeners array
       (action as any)._mixer.removeEventListener("finished", () =>

@@ -1,5 +1,4 @@
-import { Grid, KeyboardControls } from "@react-three/drei";
-import { Perf } from "r3f-perf";
+import { KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 
 import { useControls } from "leva";
@@ -12,6 +11,8 @@ import RoughPlane from "../../components/example/RoughPlane.js";
 import ShotCube from "../../components/example/ShotCube.js";
 import Slopes from "../../components/example/Slopes.js";
 import Steps from "../../components/example/Steps.js";
+import { Grid } from "@react-three/drei";
+import { Perf } from "r3f-perf";
 
 import Ecctrl from "ecctrl";
 import CharacterModel from "../../components/example/CharacterModel.js";
