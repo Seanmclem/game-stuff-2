@@ -10,10 +10,12 @@ import RoughPlane from "../../components/example/RoughPlane.js";
 import ShotCube from "../../components/example/ShotCube.js";
 import Slopes from "../../components/example/Slopes.js";
 import Steps from "../../components/example/Steps.js";
-import { Grid } from "@react-three/drei";
+import { Grid, Box } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import { CharacterKeyboardController } from "../../character-controller/CharacterKeyboardController.js";
-// import { CuboidCollider } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
+
+const collider_box_size = 5;
 
 export const LevelOne = () => {
   /**
@@ -39,12 +41,26 @@ export const LevelOne = () => {
 
       <Physics debug={physics} timeStep="vary">
         <CharacterKeyboardController />
-        {/* 
-        <CuboidCollider
-          args={[15, 10, 15]}
-          sensor
-          onIntersectionEnter={() => console.log("Goal!")}
-        /> */}
+        {/* left/right, height, forward-depth */}
+        <Box
+          args={[collider_box_size, collider_box_size, collider_box_size]}
+          position={[0, 2.5, 10]}
+        >
+          <meshBasicMaterial wireframe />
+        </Box>
+        <RigidBody type="fixed" position={[0, 2.5, 10]}>
+          <CuboidCollider
+            args={[
+              collider_box_size / 2,
+              collider_box_size / 2,
+              collider_box_size / 2,
+            ]}
+            // ^ 5,5,5 VS 2.5,2.5,2.5 -> because Rapier uses half extents for the collider
+            sensor
+            onIntersectionEnter={(e) => console.log("Goal!", e)}
+            onIntersectionExit={() => console.log("Exited")}
+          />
+        </RigidBody>
 
         {/* Rough plan */}
         <RoughPlane />
