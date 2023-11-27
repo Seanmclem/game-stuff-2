@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^9.88.17",
     "@react-three/fiber": "^8.15.11",
+    "@react-three/rapier": "^1.1.2",
     "ecctrl": "^1.0.45",
     "leva": "^0.9.35",
     "r3f-perf": "^7.1.2",
@@ -20,6 +22,7 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@types/three": "^0.158.3",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
