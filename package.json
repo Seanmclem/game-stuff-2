@@ -13,7 +13,7 @@
     "@react-three/drei": "^9.88.17",
     "@react-three/fiber": "^8.15.11",
     "@react-three/rapier": "^1.1.2",
-    "ecctrl": "^1.0.45",
+    "ecctrl": "^1.0.50",
     "leva": "^0.9.35",
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
@@ -22,9 +22,9 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
-    "@types/three": "^0.158.3",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
+    "@types/three": "^0.158.3",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",

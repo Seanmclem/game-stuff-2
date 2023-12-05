@@ -3,10 +3,7 @@ import CharacterModel from "../components/example/CharacterModel";
 import { keyboardMap } from "./control-constants";
 import { KeyboardControls } from "@react-three/drei";
 
-export const CharacterKeyboardController = () => {
-  {
-    /* Keyboard preset */
-  }
+export const CharacterKeyboardController = ({ children }: any) => {
   return (
     <KeyboardControls map={keyboardMap}>
       {/* Character Control */}
@@ -20,7 +17,7 @@ export const CharacterKeyboardController = () => {
         autoBalanceDampingC={0.04}
       >
         {/* Replace your model here */}
-        <CharacterModel />
+        {children}
       </Ecctrl>
     </KeyboardControls>
   );

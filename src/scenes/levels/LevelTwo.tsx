@@ -1,18 +1,14 @@
 import { Physics } from "@react-three/rapier";
 
 import { useControls } from "leva";
-import DynamicPlatforms from "../../components/example/DynamicPlatforms.js";
-import FloatingPlatform from "../../components/example/FloatingPlatform.js";
+
 import Floor from "../../components/example/Floor.js";
 import Lights from "../../components/example/Lights.js";
-import RigidObjects from "../../components/example/RigidObjects.js";
 import RoughPlane from "../../components/example/RoughPlane.js";
 import ShotCube from "../../components/example/ShotCube.js";
-import Slopes from "../../components/example/Slopes.js";
-import Steps from "../../components/example/Steps.js";
-import { Grid } from "@react-three/drei";
-import { Perf } from "r3f-perf";
+
 import { CharacterKeyboardController } from "../../character-controller/CharacterKeyboardController.js";
+import CharacterModel from "../../components/character-models/ghost-guy/CharacterModel.js";
 
 export const LevelTwo = () => {
   /**
@@ -37,25 +33,12 @@ export const LevelTwo = () => {
       <Lights />
 
       <Physics debug={physics} timeStep="vary">
-        <CharacterKeyboardController />
+        <CharacterKeyboardController>
+          <CharacterModel />
+        </CharacterKeyboardController>
 
         {/* Rough plan */}
         <RoughPlane />
-
-        {/* Slopes and stairs */}
-        <Slopes />
-
-        {/* Small steps */}
-        <Steps />
-
-        {/* Rigid body objects */}
-        <RigidObjects />
-
-        {/* Floating platform */}
-        <FloatingPlatform />
-
-        {/* Dynamic platforms */}
-        <DynamicPlatforms />
 
         {/* Floor */}
         <Floor />

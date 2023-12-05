@@ -1,5 +1,7 @@
 import { Physics } from "@react-three/rapier";
 
+import type { CollisionPayload } from "@react-three/rapier/dist/declarations/src";
+
 import { useControls } from "leva";
 import DynamicPlatforms from "../../components/example/DynamicPlatforms.js";
 import FloatingPlatform from "../../components/example/FloatingPlatform.js";
@@ -10,12 +12,13 @@ import RoughPlane from "../../components/example/RoughPlane.js";
 import ShotCube from "../../components/example/ShotCube.js";
 import Slopes from "../../components/example/Slopes.js";
 import Steps from "../../components/example/Steps.js";
-import { Grid, Box } from "@react-three/drei";
+// import { Grid, Box } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import { CharacterKeyboardController } from "../../character-controller/CharacterKeyboardController.js";
-import { CuboidCollider, RigidBody } from "@react-three/rapier";
 
-const collider_box_size = 5;
+import { useLevelStore } from "../../stores/useLevelStore.js";
+import { BasicBoxSensor } from "../../components/sensors-triggers-etc/BasicBoxSensor.js";
+import CharacterModel from "../../components/character-models/floater-model/CharacterModel.js";
 
 export const LevelOne = () => {
   /**
@@ -24,6 +27,17 @@ export const LevelOne = () => {
   const { physics } = useControls("World Settings", {
     physics: false,
   });
+
+  const { current_level, set_current_level } = useLevelStore();
+
+  const handle_reached_goal = (event: CollisionPayload) => {
+    if (
+      event.colliderObject.name === "character-capsule-collider" &&
+      current_level === 1
+    ) {
+      set_current_level(2);
+    }
+  };
 
   return (
     <>
@@ -40,27 +54,15 @@ export const LevelOne = () => {
       <Lights />
 
       <Physics debug={physics} timeStep="vary">
-        <CharacterKeyboardController />
+        <CharacterKeyboardController>
+          <CharacterModel />
+        </CharacterKeyboardController>
         {/* left/right, height, forward-depth */}
-        <Box
-          args={[collider_box_size, collider_box_size, collider_box_size]}
-          position={[0, 2.5, 10]}
-        >
-          <meshBasicMaterial wireframe />
-        </Box>
-        <RigidBody type="fixed" position={[0, 2.5, 10]}>
-          <CuboidCollider
-            args={[
-              collider_box_size / 2,
-              collider_box_size / 2,
-              collider_box_size / 2,
-            ]}
-            // ^ 5,5,5 VS 2.5,2.5,2.5 -> because Rapier uses half extents for the collider
-            sensor
-            onIntersectionEnter={(e) => console.log("Goal!", e)}
-            onIntersectionExit={() => console.log("Exited")}
-          />
-        </RigidBody>
+
+        <BasicBoxSensor
+          handle_intersection_enter={handle_reached_goal}
+          wireframe
+        />
 
         {/* Rough plan */}
         <RoughPlane />
