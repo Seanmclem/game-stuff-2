@@ -19,6 +19,7 @@ import { CharacterKeyboardController } from "../../character-controller/Characte
 import { useLevelStore } from "../../stores/useLevelStore.js";
 import { BasicBoxSensor } from "../../components/sensors-triggers-etc/BasicBoxSensor.js";
 import CharacterModel from "../../components/character-models/floater-model/CharacterModel.js";
+import { HudPlanes } from "../../modules/Hud/HudPlanes.js";
 
 export const LevelOne = () => {
   /**
@@ -41,6 +42,7 @@ export const LevelOne = () => {
 
   return (
     <>
+      <HudPlanes />
       {/* <Perf position="top-left" minimal />
 
       <Grid
