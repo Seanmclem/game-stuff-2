@@ -1,38 +1,52 @@
 import { Hud, OrthographicCamera, Plane } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useThree } from "@react-three/fiber";
+import { useState } from "react";
 
-import { Matrix4, Vector3 } from "three";
+import { Vector3 } from "three";
 
-export const HudPlanes = ({ renderPriority = 1, matrix = new Matrix4() }) => {
+export const HudPlanes = ({ renderPriority = 1 }) => {
   const { size } = useThree();
   const [hovered, hover] = useState(null);
 
+  const position_offset = 60;
+
   const positions = {
     top_right: [
-      size.width / 2 - 60,
-      size.height / 2 - 60,
+      size.width / 2 - position_offset,
+      size.height / 2 - position_offset,
       0,
     ] as unknown as Vector3,
     top_left: [
-      -size.width / 2 + 60,
-      size.height / 2 - 60,
+      -size.width / 2 + position_offset,
+      size.height / 2 - position_offset,
       0,
     ] as unknown as Vector3,
-    top_middle: [0, size.height / 2 - 60, 0] as unknown as Vector3,
-    middle_right: [size.width / 2 - 60, 0, 0] as unknown as Vector3,
-    middle_left: [-size.width / 2 + 60, 0, 0] as unknown as Vector3,
+    top_middle: [0, size.height / 2 - position_offset, 0] as unknown as Vector3,
+    middle_right: [
+      size.width / 2 - position_offset,
+      0,
+      0,
+    ] as unknown as Vector3,
+    middle_left: [
+      -size.width / 2 + position_offset,
+      0,
+      0,
+    ] as unknown as Vector3,
     bottom_right: [
-      size.width / 2 - 60,
-      -size.height / 2 + 60,
+      size.width / 2 - position_offset,
+      -size.height / 2 + position_offset,
       0,
     ] as unknown as Vector3,
     bottom_left: [
-      -size.width / 2 + 60,
-      -size.height / 2 + 60,
+      -size.width / 2 + position_offset,
+      -size.height / 2 + position_offset,
       0,
     ] as unknown as Vector3,
-    bottom_middle: [0, -size.height / 2 + 60, 0] as unknown as Vector3,
+    bottom_middle: [
+      0,
+      -size.height / 2 + position_offset,
+      0,
+    ] as unknown as Vector3,
     middle_middle: [0, 0, 0] as unknown as Vector3,
   };
 
