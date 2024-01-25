@@ -9,8 +9,20 @@
     "noEmit": true,
     "moduleResolution": "node",
     "strictNullChecks": false,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "declaration": true,
-    "lib": ["es2022", "dom"]
-  }
+    "lib": [
+      "es2022",
+      "dom"
+    ],
+    "types": [
+      "@react-three/fiber"
+    ]
+  },
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

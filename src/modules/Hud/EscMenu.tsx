@@ -48,14 +48,20 @@ export const EscMenu: React.FC = () => {
     action: handle_Escape_Press,
   });
 
-  if (menuOpen)
+  const handlePress = (e) => {
+    console.log("PRESSED");
+    e.stopPropagation();
+    // (e.target as HTMLCanvasElement).requestPointerLock();
+  };
+
+  if (menuOpen) {
     return (
       <Hud renderPriority={1}>
         <OrthographicCamera makeDefault position={[0, 0, 100]} />
         <Plane
           position={top_right}
           args={[80, 80]} // Size of the plane
-          // onClick={() => setMenuOpen(true)}
+          onClick={handlePress}
         >
           <meshLambertMaterial color={"hotpink"} />
         </Plane>
@@ -64,6 +70,7 @@ export const EscMenu: React.FC = () => {
         <pointLight position={[200, 200, 100]} intensity={0.5} />
       </Hud>
     );
+  }
 
   return null;
 };

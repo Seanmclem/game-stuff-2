@@ -9,18 +9,18 @@ import Floor from "../../components/example/Floor.js";
 import Lights from "../../components/example/Lights.js";
 import RigidObjects from "../../components/example/RigidObjects.js";
 import RoughPlane from "../../components/example/RoughPlane.js";
-import ShotCube from "../../components/example/ShotCube.js";
 import Slopes from "../../components/example/Slopes.js";
 import Steps from "../../components/example/Steps.js";
 // import { Grid, Box } from "@react-three/drei";
-import { Perf } from "r3f-perf";
 import { CharacterKeyboardController } from "../../character-controller/CharacterKeyboardController.js";
 
 import { useLevelStore } from "../../stores/useLevelStore.js";
 import { BasicBoxSensor } from "../../components/sensors-triggers-etc/BasicBoxSensor.js";
 import CharacterModel from "../../components/character-models/floater-model/CharacterModel.js";
-import { HudPlanes } from "../../modules/Hud/HudPlanes.js";
 import { EscMenu } from "../../modules/Hud/EscMenu.js";
+import { ModelWithPhysics } from "../../modules/models/ModelWithPhysics.js";
+import { SimplePlatform } from "../../modules/environment/SimplePlatform.jsx";
+import { LevelEnd } from "../../components/sensors-triggers-etc/LevelEnd.jsx";
 
 export const LevelOne = () => {
   /**
@@ -30,30 +30,20 @@ export const LevelOne = () => {
     physics: false,
   });
 
-  const { current_level, set_current_level } = useLevelStore();
+  // const { current_level, set_current_level } = useLevelStore();
 
-  const handle_reached_goal = (event: CollisionPayload) => {
-    if (
-      event.colliderObject.name === "character-capsule-collider" &&
-      current_level === 1
-    ) {
-      set_current_level(2);
-    }
-  };
+  // const handle_reached_goal = (event: CollisionPayload) => {
+  //   if (
+  //     event.colliderObject.name === "character-capsule-collider" &&
+  //     current_level === 1
+  //   ) {
+  //     set_current_level(2);
+  //   }
+  // };
 
   return (
     <>
       <EscMenu />
-      {/* <HudPlanes /> */}
-      {/* <Perf position="top-left" minimal />
-
-      <Grid
-        args={[300, 300]}
-        sectionColor={"lightgray"}
-        cellColor={"gray"}
-        position={[0, -0.99, 0]}
-        userData={{ camExcludeCollision: true }} // this won't be collide by camera ray
-      /> */}
 
       <Lights />
 
@@ -61,12 +51,17 @@ export const LevelOne = () => {
         <CharacterKeyboardController>
           <CharacterModel />
         </CharacterKeyboardController>
+
+        <SimplePlatform position={[5, -0.5, 1]} />
         {/* left/right, height, forward-depth */}
 
-        <BasicBoxSensor
+        {/* <BasicBoxSensor
           handle_intersection_enter={handle_reached_goal}
           wireframe
-        />
+        /> */}
+        <LevelEnd position={[0, 2.5, 10]} />
+
+        {/* Generic from ECCTRL below */}
 
         {/* Rough plan */}
         <RoughPlane />
@@ -88,9 +83,6 @@ export const LevelOne = () => {
 
         {/* Floor */}
         <Floor />
-
-        {/* Shoting cubes */}
-        <ShotCube />
       </Physics>
     </>
   );

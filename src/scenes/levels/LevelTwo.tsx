@@ -20,16 +20,6 @@ export const LevelTwo = () => {
 
   return (
     <>
-      {/* <Perf position="top-left" minimal />
-
-      <Grid
-        args={[300, 300]}
-        sectionColor={"lightgray"}
-        cellColor={"gray"}
-        position={[0, -0.99, 0]}
-        userData={{ camExcludeCollision: true }} // this won't be collide by camera ray
-      /> */}
-
       <Lights />
 
       <Physics debug={physics} timeStep="vary">
@@ -42,9 +32,6 @@ export const LevelTwo = () => {
 
         {/* Floor */}
         <Floor />
-
-        {/* Shoting cubes */}
-        <ShotCube />
       </Physics>
     </>
   );

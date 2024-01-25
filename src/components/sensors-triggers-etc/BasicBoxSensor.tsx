@@ -1,7 +1,11 @@
 import { Box } from "@react-three/drei";
 import type { Vector3 } from "@react-three/fiber";
-import { CuboidCollider, RigidBody } from "@react-three/rapier";
-import type { CollisionPayload } from "@react-three/rapier/dist/declarations/src";
+import {
+  CuboidCollider,
+  RigidBody,
+  type CollisionPayload,
+} from "@react-three/rapier";
+// import type { CollisionPayload } from "@react-three/rapier/dist/declarations/src";
 
 const default_box_size = 5;
 

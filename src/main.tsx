@@ -33,6 +33,9 @@ root.render(
         far: 1000,
       }}
       onPointerDown={(e) => {
+        // ok ... derp .... I have access to this in my code
+        // ... so I need to store menu-open in a global store...
+        // should anyway, with is-paused and other game state
         if (e.pointerType === "mouse") {
           (e.target as HTMLCanvasElement).requestPointerLock();
         }
