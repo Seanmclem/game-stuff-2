@@ -1,6 +1,5 @@
+import { SimplePlatform as SimplePlatform1 } from "../../components/modules/environment/SimplePlatform";
 import { Physics } from "@react-three/rapier";
-
-import type { CollisionPayload } from "@react-three/rapier/dist/declarations/src";
 
 import { useControls } from "leva";
 import DynamicPlatforms from "../../components/example/DynamicPlatforms.js";
@@ -14,13 +13,11 @@ import Steps from "../../components/example/Steps.js";
 // import { Grid, Box } from "@react-three/drei";
 import { CharacterKeyboardController } from "../../character-controller/CharacterKeyboardController.js";
 
-import { useLevelStore } from "../../stores/useLevelStore.js";
-import { BasicBoxSensor } from "../../components/sensors-triggers-etc/BasicBoxSensor.js";
 import CharacterModel from "../../components/character-models/floater-model/CharacterModel.js";
-import { EscMenu } from "../../modules/Hud/EscMenu.js";
-import { ModelWithPhysics } from "../../modules/models/ModelWithPhysics.js";
-import { SimplePlatform } from "../../modules/environment/SimplePlatform.jsx";
+import { EscMenu } from "../../components/modules/Hud/EscMenu.jsx";
+import { SimplePlatform } from "../../components/modules/environment/SimplePlatform.jsx";
 import { LevelEnd } from "../../components/sensors-triggers-etc/LevelEnd.jsx";
+import { PlayerStart } from "../../components/PlayerStart/PlayerStart";
 
 export const LevelOne = () => {
   /**
@@ -30,17 +27,6 @@ export const LevelOne = () => {
     physics: false,
   });
 
-  // const { current_level, set_current_level } = useLevelStore();
-
-  // const handle_reached_goal = (event: CollisionPayload) => {
-  //   if (
-  //     event.colliderObject.name === "character-capsule-collider" &&
-  //     current_level === 1
-  //   ) {
-  //     set_current_level(2);
-  //   }
-  // };
-
   return (
     <>
       <EscMenu />
@@ -48,18 +34,14 @@ export const LevelOne = () => {
       <Lights />
 
       <Physics debug={physics} timeStep="vary">
-        <CharacterKeyboardController>
-          <CharacterModel />
-        </CharacterKeyboardController>
+        <PlayerStart />
 
         <SimplePlatform position={[5, -0.5, 1]} />
+        <SimplePlatform position={[7.46, 0.3, 1]} />
+
         {/* left/right, height, forward-depth */}
 
-        {/* <BasicBoxSensor
-          handle_intersection_enter={handle_reached_goal}
-          wireframe
-        /> */}
-        <LevelEnd position={[0, 2.5, 10]} />
+        <LevelEnd position={[0, 2.5, 10.14]} />
 
         {/* Generic from ECCTRL below */}
 
