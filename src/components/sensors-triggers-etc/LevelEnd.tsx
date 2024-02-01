@@ -16,6 +16,7 @@ export const LevelEnd = ({ position = [0, 2.5, 10] as Vector3 }) => {
       current_level === 1
     ) {
       set_current_level(2);
+      // TODO: make this a bit more elegant
     }
   };
 

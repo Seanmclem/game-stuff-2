@@ -50,6 +50,7 @@ export const LevelOne = () => {
 
         {/* Slopes and stairs */}
         <Slopes />
+        {/* Find adjustable slope code */}
 
         {/* Small steps */}
         <Steps />

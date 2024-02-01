@@ -1,7 +1,7 @@
 import type { Vector3 } from "@react-three/fiber";
 import { CharacterKeyboardController } from "../../character-controller/CharacterKeyboardController";
 
-import DefaultFloaterModel from "../character-models/floater-model/CharacterModel.js";
+import DefaultFloaterModel from "../character-models/walking-bunny-man/CharacterModel.js";
 
 export interface PlayerStartProps {
   children?: React.ReactNode;

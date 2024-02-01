@@ -10,6 +10,7 @@ export const SimplePlatform = ({ position = [0, 0, 0] as Vector3 }) => {
     <ModelWithPhysics
       url="/Cube_Grass_Single.gltf"
       physicsProps={{ type: "fixed", position }}
+      receiveShadow
     />
   );
 };
