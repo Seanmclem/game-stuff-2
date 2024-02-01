@@ -111,11 +111,11 @@ export default function CharacterModel(props: CharacterModelProps) {
     jump: "Jump",
     jumpIdle: "Jump_Idle",
     jumpLand: "Jump_Land",
-    fall: "Climbing", // This is for falling from high sky
+    fall: "Jump", // This is for falling from high sky ... formerly "Climbing"
     action1: "Wave",
-    action2: "Dance",
-    action3: "Cheer",
-    action4: "Attack(1h)",
+    action2: "HitReact",
+    action3: "Death",
+    action4: "", // formerly "Attack(1h)"
   };
 
   useEffect(() => {
@@ -162,6 +162,10 @@ export default function CharacterModel(props: CharacterModelProps) {
   useEffect(() => {
     // Play animation
     const action = actions[curAnimation ? curAnimation : animationSet.jumpIdle];
+
+    if (!action) {
+      console.log({ curAnimation, actions });
+    }
 
     // For jump and jump land animation, only play once and clamp when finish
     if (
