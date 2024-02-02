@@ -250,7 +250,7 @@ export default function CharacterModel(props: CharacterModelProps) {
       {/* Character model */}
 
       <group ref={group} {...props} dispose={null}>
-        <group name="Scene" scale={0.8} position={[0, -0.93, 0]}>
+        <group name="Scene" scale={0.7} position={[0, -0.93, 0]}>
           <group name="CharacterArmature">
             <group name="Arms">
               <skinnedMesh
