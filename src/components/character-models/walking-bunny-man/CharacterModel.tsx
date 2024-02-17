@@ -233,14 +233,14 @@ export default function CharacterModel(props: CharacterModelProps) {
         args={[0.1]}
         ref={rightHandColliderRef}
         onCollisionEnter={(e) => {
-          if (curAnimation === animationSet.action4) {
-            // Play punch effect
-            setPunchEffectProp((prev) => ({
-              ...prev,
-              visible: true,
-              play: true,
-            }));
-          }
+          // if (curAnimation === animationSet.action4) {
+          //   // Play punch effect
+          //   setPunchEffectProp((prev) => ({
+          //     ...prev,
+          //     visible: true,
+          //     play: true,
+          //   }));
+          // }
         }}
       />
 

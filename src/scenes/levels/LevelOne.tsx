@@ -11,13 +11,12 @@ import RoughPlane from "../../components/example/RoughPlane.js";
 import Slopes from "../../components/example/Slopes.js";
 import Steps from "../../components/example/Steps.js";
 // import { Grid, Box } from "@react-three/drei";
-import { CharacterKeyboardController } from "../../character-controller/CharacterKeyboardController.js";
 
-import CharacterModel from "../../components/character-models/floater-model/CharacterModel.js";
 import { EscMenu } from "../../components/modules/Hud/EscMenu.jsx";
 import { SimplePlatform } from "../../components/modules/environment/SimplePlatform.jsx";
 import { LevelEnd } from "../../components/sensors-triggers-etc/LevelEnd.jsx";
 import { PlayerStart } from "../../components/PlayerStart/PlayerStart";
+import { DynamicPlatform } from "../../components/modules/environment/DynamicPlatform";
 
 export const LevelOne = () => {
   /**
@@ -38,6 +37,8 @@ export const LevelOne = () => {
 
         <SimplePlatform position={[5, -0.5, 1]} />
         <SimplePlatform position={[7.46, 0.3, 1]} />
+
+        <DynamicPlatform position={[-5, -0.3, -1]} />
 
         {/* left/right, height, forward-depth */}
 
