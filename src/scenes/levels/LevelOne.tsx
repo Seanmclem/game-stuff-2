@@ -35,26 +35,26 @@ export const LevelOne = () => {
       <Physics debug={physics} timeStep="vary">
         <PlayerStart />
 
-        <SimplePlatform position={[5, -0.5, 1]} />
-        <SimplePlatform position={[7.46, 0.3, 1]} />
+        {/* <SimplePlatform position={[5, -0.5, 1]} />
+        <SimplePlatform position={[7.46, 0.3, 1]} /> */}
 
-        <DynamicPlatform position={[-5, -0.3, -1]} />
+        <DynamicPlatform position={[-1, -0.3, 3]} />
 
         {/* left/right, height, forward-depth */}
 
-        <LevelEnd position={[0, 2.5, 10.14]} />
+        <LevelEnd position={[0, 2.5, 20.14]} />
 
         {/* Generic from ECCTRL below */}
 
         {/* Rough plan */}
-        <RoughPlane />
+        {/* <RoughPlane /> */}
 
         {/* Slopes and stairs */}
         <Slopes />
         {/* Find adjustable slope code */}
 
         {/* Small steps */}
-        <Steps />
+        {/* <Steps /> */}
 
         {/* Rigid body objects */}
         <RigidObjects />
