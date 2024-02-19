@@ -11,8 +11,8 @@ const block_size = 2;
 
 export const DynamicPlatform = ({
   position = [0, 0, 0],
-  forwardDepth = 0,
-  sideWidth = 0,
+  forwardDepth = 1,
+  sideWidth = 3,
 }: SimplePlatformProps) => {
   const degrree_to_radian = (degree: number) => degree * (Math.PI / 180);
 
@@ -51,6 +51,39 @@ export const DynamicPlatform = ({
       {/* top- left like */}
 
       {/* Middles go here, based on depth/width props */}
+      {/* {sideWidth ? ( // in progress
+        // top middle(s)
+        <ModelWithPhysics
+          url="/cube1/Cube_Grass_Side.gltf"
+          physicsProps={{
+            type: "fixed",
+            position: [
+              position[0] + sideWidth - block_size, // negataive, proogats to the right
+              position[1],
+              position[2] + vert_movement,
+            ],
+          }}
+          receiveShadow
+        />
+      ) : null} */}
+
+      {/* POC needs love, for side-width-top middle fill */}
+      {Array(sideWidth)
+        .fill(0)
+        .map((_block_horizontal, id) => (
+          <ModelWithPhysics
+            url="/cube1/Cube_Grass_Side.gltf"
+            physicsProps={{
+              type: "fixed",
+              position: [
+                position[0] + sideWidth - block_size * id, // negataive, proogats to the right
+                position[1],
+                position[2] + vert_movement,
+              ],
+            }}
+            receiveShadow
+          />
+        ))}
 
       <ModelWithPhysics
         url="/cube1/Cube_Grass_Corner.gltf"
