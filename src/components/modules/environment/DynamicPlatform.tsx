@@ -11,7 +11,7 @@ const block_size = 2;
 
 export const DynamicPlatform = ({
   position = [0, 0, 0],
-  forwardDepth = 1, // fix me
+  forwardDepth = 1,
   sideWidth = 1,
 }: SimplePlatformProps) => {
   const degrree_to_radian = (degree: number) => degree * (Math.PI / 180);
@@ -33,7 +33,7 @@ export const DynamicPlatform = ({
         }}
         receiveShadow
       />
-      {/* top-right like */}
+      {/* top-right ^ */}
 
       <ModelWithPhysics
         url="/cube1/Cube_Grass_Corner.gltf"
@@ -48,26 +48,11 @@ export const DynamicPlatform = ({
         }}
         receiveShadow
       />
-      {/* top- left like */}
+      {/* top- left ^ */}
 
-      {/* Middles go here, based on depth/width props */}
-      {/* {sideWidth ? ( // in progress
-        // top middle(s)
-        <ModelWithPhysics
-          url="/cube1/Cube_Grass_Side.gltf"
-          physicsProps={{
-            type: "fixed",
-            position: [
-              position[0] + sideWidth - block_size, // negataive, proogats to the right
-              position[1],
-              position[2] + vert_movement,
-            ],
-          }}
-          receiveShadow
-        />
-      ) : null} */}
-
-      {/* POC needs love, for side-width-top middle fill */}
+      {/* POC needs love, for side-width-top middle */}
+      {/* IDEA: combine top and bottom? Since same height, opposite offsets */}
+      {/* top middle V */}
       {Array(sideWidth)
         .fill(0)
         .map((_block_horizontal, id) => (
@@ -85,8 +70,7 @@ export const DynamicPlatform = ({
           />
         ))}
 
-      {/* need, all middle rows */}
-      {/* TODO: bring in that `Cube_Grass_Center.gltf` */}
+      {/* all middle rows V */}
       {Array(forwardDepth)
         .fill(0)
         .map((_block_vertical, idy) =>
@@ -100,7 +84,7 @@ export const DynamicPlatform = ({
                   position: [
                     position[0] + sideWidth - block_size * id, // negataive, proogats to the right
                     position[1],
-                    position[2] - idy * block_size + forwardDepth - 2, //vert_movement,
+                    position[2] - idy * block_size + forwardDepth - block_size, //vert_movement,
                   ],
                 }}
                 receiveShadow
@@ -108,42 +92,9 @@ export const DynamicPlatform = ({
             ))
         )}
 
-      {/* {Array(sideWidth)
-        .fill(0)
-        .map((_block_horizontal, id) => (
-          <ModelWithPhysics
-            url="/cube1/Cube_Grass_Center.gltf"
-            physicsProps={{
-              type: "fixed",
-              position: [
-                position[0] + sideWidth - block_size * id, // negataive, proogats to the right
-                position[1],
-                position[2] - 2, //vert_movement,
-              ],
-            }}
-            receiveShadow
-          />
-        ))}
-      {Array(sideWidth)
-        .fill(0)
-        .map((_block_horizontal, id) => (
-          <ModelWithPhysics
-            url="/cube1/Cube_Grass_Center.gltf"
-            physicsProps={{
-              type: "fixed",
-              position: [
-                position[0] + sideWidth - block_size * id, // negataive, proogats to the right
-                position[1],
-                position[2] - 0, //vert_movement,
-              ],
-            }}
-            receiveShadow
-          />
-        ))} */}
-      {/* TODO: ^those 2, make programmatic */}
-
-      {/* POC needs love, for side-width bottom-middle fill  */}
+      {/* POC needs love  */}
       {/* IDEA: combine top and bottom? Since same height, opposite offsets */}
+      {/* bottom middle V */}
       {Array(sideWidth)
         .fill(0)
         .map((_block_horizontal, id) => (
@@ -210,7 +161,7 @@ export const DynamicPlatform = ({
         }}
         receiveShadow
       />
-      {/* bottom-left like */}
+      {/* bottom-left ^ */}
 
       <ModelWithPhysics
         url="/cube1/Cube_Grass_Corner.gltf"
@@ -225,7 +176,7 @@ export const DynamicPlatform = ({
         }}
         receiveShadow
       />
-      {/* bottom-right like */}
+      {/* bottom-right ^ */}
     </group>
   );
 };
