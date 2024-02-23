@@ -38,7 +38,7 @@ export const LevelOne = () => {
         {/* <SimplePlatform position={[5, -0.5, 1]} />
         <SimplePlatform position={[7.46, 0.3, 1]} /> */}
 
-        <DynamicPlatform position={[1, -0.3, 3]} />
+        <DynamicPlatform position={[0, -0.3, 3]} />
 
         {/* left/right, height, forward-depth */}
 
