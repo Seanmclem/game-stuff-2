@@ -24,6 +24,7 @@ export const CharacterKeyboardController = ({
         autoBalanceSpringK={1.2}
         autoBalanceDampingC={0.04}
         position={position}
+        // jumpVelocity={6}
       >
         {/* Replace your model here */}
         {children}

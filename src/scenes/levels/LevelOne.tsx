@@ -40,9 +40,13 @@ export const LevelOne = () => {
 
         <DynamicPlatform position={[0, -0.3, 3]} />
 
+        <DynamicPlatform position={[0, 0.2, 6.9]} sideWidth={10} />
+
+        <DynamicPlatform position={[0, 1.3, 10]} sideWidth={4} />
+
         {/* left/right, height, forward-depth */}
 
-        <LevelEnd position={[0, 2.5, 20.14]} />
+        <LevelEnd position={[0, 2.5, 22.14]} />
 
         {/* Generic from ECCTRL below */}
 
