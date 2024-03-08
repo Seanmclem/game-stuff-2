@@ -16,6 +16,7 @@ export const CharacterKeyboardController = ({
     <KeyboardControls map={keyboardMap}>
       {/* Character Control */}
       <Ecctrl
+        // TODO: need to update the libs.
         debug
         animated
         followLight

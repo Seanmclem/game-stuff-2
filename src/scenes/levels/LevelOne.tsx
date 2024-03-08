@@ -17,6 +17,7 @@ import { SimplePlatform } from "../../components/modules/environment/SimplePlatf
 import { LevelEnd } from "../../components/sensors-triggers-etc/LevelEnd.jsx";
 import { PlayerStart } from "../../components/PlayerStart/PlayerStart";
 import { DynamicPlatform } from "../../components/modules/environment/DynamicPlatform";
+import { PlatformsOne } from "./level-one/PlatformsOne";
 
 export const LevelOne = () => {
   /**
@@ -38,15 +39,11 @@ export const LevelOne = () => {
         {/* <SimplePlatform position={[5, -0.5, 1]} />
         <SimplePlatform position={[7.46, 0.3, 1]} /> */}
 
-        <DynamicPlatform position={[0, -0.3, 3]} />
-
-        <DynamicPlatform position={[0, 0.2, 6.9]} sideWidth={10} />
-
-        <DynamicPlatform position={[0, 1.3, 10]} sideWidth={4} />
+        <PlatformsOne />
 
         {/* left/right, height, forward-depth */}
 
-        <LevelEnd position={[0, 2.5, 22.14]} />
+        {/* <LevelEnd position={[0, 2.5, 22.14]} /> */}
 
         {/* Generic from ECCTRL below */}
 
